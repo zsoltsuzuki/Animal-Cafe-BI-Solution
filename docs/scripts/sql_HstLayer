@@ -1,0 +1,48 @@
+USE [AnimalCafe_HST]
+GO
+
+CREATE TABLE [dbo].[hst_Customers](
+    [CustomerID] [int] NOT NULL,
+    [Name]       [nvarchar](255) NULL,
+    [Email]      [nvarchar](100) NULL,
+    [Phone]      [nvarchar](50) NULL,
+    [Points]     [int] NULL,
+    [DateJoined] [datetime] NULL,
+    [START_DATE] [datetime] DEFAULT GETDATE(),
+    [END_DATE]   [datetime] NULL
+);
+GO
+
+CREATE TABLE [dbo].[hst_Products](
+    [ProductID]      [int] NOT NULL,
+    [ProductName]    [nvarchar](255) NULL,
+    [Category]       [nvarchar](100) NULL,
+    [ProductPrice]   [decimal](10, 2) NULL,
+    [ProductOnStock] [int] NULL,
+    [START_DATE]     [datetime] DEFAULT GETDATE(),
+    [END_DATE]       [datetime] NULL
+);
+GO
+
+CREATE TABLE [dbo].[hst_Orders](
+    [order_id]       [int] NOT NULL,
+    [customer_id]    [int] NULL,
+    [reservation_id] [int] NULL,
+    [order_date]     [datetime] NULL,
+    [order_status]   [nvarchar](50) NULL,
+    [total_amount]   [decimal](10, 2) NULL,
+    [START_DATE]     [datetime] DEFAULT GETDATE(),
+    [END_DATE]       [datetime] NULL
+);
+GO
+
+CREATE TABLE [dbo].[hst_OrderDetails](
+    [order_detail_id] [int] NOT NULL,
+    [order_id]        [int] NOT NULL,
+    [product_id]      [int] NOT NULL,
+    [quantity]        [int] NULL,
+    [unit_price]      [decimal](10, 2) NULL,
+    [START_DATE]      [datetime] DEFAULT GETDATE(),
+    [END_DATE]        [datetime] NULL
+);
+GO
