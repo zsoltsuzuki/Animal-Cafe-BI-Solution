@@ -1,0 +1,41 @@
+USE [AnimalCafe_DM]
+GO
+
+CREATE TABLE [dbo].[DimProduct](
+    [ProductKey]       [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [SourceProductID]  [int] NOT NULL,
+    [ProductName]      [nvarchar](255) NULL,
+    [Category]         [nvarchar](100) NULL,
+    [CurrentPrice]     [decimal](10, 2) NULL
+);
+GO
+
+CREATE TABLE [dbo].[DimCustomer](
+    [CustomerKey]      [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [SourceCustomerID] [int] NOT NULL,
+    [FullName]         [nvarchar](255) NULL,
+    [Email]            [nvarchar](255) NULL,
+    [IsCurrent]        [bit] NULL,
+    [StartDate]        [datetime] NULL,
+    [EndDate]          [datetime] NULL
+);
+GO
+
+CREATE TABLE [dbo].[FactSales](
+    [SalesKey]         [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [CustomerKey]      [int] NOT NULL,
+    [ProductKey]       [int] NOT NULL,
+    [DateKey]          [int] NOT NULL,
+    [OrderNumber]      [int] NULL,
+    [OrderDate]        [datetime] NULL,
+    [Quantity]         [int] NULL,
+    [UnitPrice]        [decimal](10, 2) NULL,
+    [TotalAmount]      [decimal](10, 2) NULL,
+    
+    CONSTRAINT [FK_FactSales_DimCustomer] FOREIGN KEY([CustomerKey])
+    REFERENCES [dbo].[DimCustomer] ([CustomerKey]),
+    
+    CONSTRAINT [FK_FactSales_DimProduct] FOREIGN KEY([ProductKey])
+    REFERENCES [dbo].[DimProduct] ([ProductKey])
+);
+GO
