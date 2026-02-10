@@ -1,0 +1,50 @@
+USE [AnimalCafe_STAGE]
+GO
+
+CREATE TABLE [dbo].[st_Customers](
+    [CustomerID] [nvarchar](255) NULL,
+    [Name]       [nvarchar](255) NULL,
+    [Email]      [nvarchar](255) NULL,
+    [Phone]      [nvarchar](255) NULL,
+    [Points]     [nvarchar](255) NULL,
+    [DateJoined] [nvarchar](255) NULL
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[st_Products](
+    [ProductID]      [nvarchar](255) NULL,
+    [ProductName]    [nvarchar](255) NULL,
+    [Category]       [nvarchar](255) NULL,
+    [ProductPrice]   [nvarchar](255) NULL,
+    [ProductOnStock] [nvarchar](255) NULL
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[st_Orders](
+    [order_id]       [nvarchar](255) NULL,
+    [customer_id]    [nvarchar](255) NULL,
+    [reservation_id] [nvarchar](255) NULL,
+    [order_date]     [nvarchar](255) NULL,
+    [order_status]   [nvarchar](255) NULL,
+    [total_amount]   [nvarchar](255) NULL
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[st_OrderDetails](
+    [order_detail_id] [nvarchar](255) NULL,
+    [order_id]        [nvarchar](255) NULL,
+    [product_id]      [nvarchar](255) NULL,
+    [quantity]        [nvarchar](255) NULL,
+    [unit_price]      [nvarchar](255) NULL
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[st_Employees](
+    [EmployeeID]  [nvarchar](255) NULL,
+    [FirstName]   [nvarchar](255) NULL,
+    [LastName]    [nvarchar](255) NULL,
+    [Role]        [nvarchar](255) NULL,
+    [HireDate]    [nvarchar](255) NULL,
+    [Email]       [nvarchar](255) NULL
+) ON [PRIMARY];
+GO
